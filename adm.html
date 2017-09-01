@@ -1,0 +1,109 @@
+<html>
+<head>
+
+    <title>Stamford University Bangladesh</title>
+    <style>
+        body {
+            margin-top: 10px;
+            margin-right: 40px;
+            margin-bottom: 10px;
+            margin-left: 70px;
+        }
+        h1 {color: blue;}
+        h2 {color: #1E90FF;}
+        p1 {margin-left: 10.5em;padding: 0 7em 2em 0;border-width: 2px;}
+    </style>
+
+
+</head>
+    <h1 align="center">Stamford University Bangladesh</h1>
+    <marquee behavior="alternate"><h2>Administration</h2></marquee>
+
+<body style="background-color:powderblue;">
+
+    <form method="get">
+        <label>Course Teacher:</label>
+        <select name="course_teacher" id="selectedTeacher">
+            <option value="">Seletc Teacher</option>
+            <option value="Dr. Kamruddin Md. Nur">1.Dr. Kamruddin Md. Nur</option>
+            <option value="Prof. Dr. M. Mahfuzul Islam">2.Prof. Dr. M. Mahfuzul Islam</option>
+            <option value="Prof. Dr. Mohammad Hanif Ali">3.Prof. Dr. Mohammad Hanif Ali</option>
+            <option value="Dr. Mohammad Shaharia Bhuyan">4.Dr. Mohammad Shaharia Bhuyan</option>
+            <option value="Tamanna Haque Nipa">5.Tamanna Haque Nipa</option>
+            <option value="Mohammad Manzurul Islam">6.Mohammad Manzurul Islam</option>
+            <option value="Tamjid Rahman">7.Tamjid Rahman</option>
+            <option value="Md. Shahedul Islam">8.Md. Shahedul Islam</option>
+            <option value="Tarikuzzaman Emon">9.Tarikuzzaman Emon</option>
+            <option value="Tarin Kazi">10.Tarin Kazi</option>
+            <option value="Nazia Hossain">11.Nazia Hossain</option>
+            <option value="Israt Jahan Mouri">12.Israt Jahan Mouri</option>
+            <option value="Shifat Sharmin Shapla">13.Shifat Sharmin Shapla</option>
+            <option value="Nilufa Yeasmin">14.Nilufa Yeasmin</option>
+            <option value="Mahfida Amjad Dipa">15.Mahfida Amjad Dipa</option>
+            <option value="Zonayed Ahmed">16.Zonayed Ahmed</option>
+            <option value="Maliha Mahbub">17.Maliha Mahbub</option>
+            <option value="Md. Rayhan Ahmed">18.Md. Rayhan Ahmed</option>
+            <option value="Rianon Zaman">19.Rianon Zaman</option>
+            <option value="Tanveer Ahmed">20.Tanveer Ahmed</option>
+            <option value="Adnan Ferdous Ashrafi">21.Adnan Ferdous Ashrafi</option>
+            <option value="Shah Sharfuddin Mahin">22.Shah Sharfuddin Mahin</option>
+            <option value="Aiasha Siddika">23.Aiasha Siddika</option>
+            <option value="Nahida Parvin">24.Nahida Parvin</option>
+            <option value="Ahmed Abdal Shafi Rasel">25.Ahmed Abdal Shafi Rasel</option>
+            <option value="Md Towhidul Islam Robin">26.  Md Towhidul Islam Robin</option>
+
+        </select>
+        
+    </form>
+    <br>
+    <div id="txtHint"><b>Teacher Evaluation info will be here.</b></div>
+    
+
+
+
+<div>
+<h1 id="myTeacher"></h1>
+</div>
+
+<div>
+<input type="button" value="Total">
+<form method="get" action="/anup/sum.php">
+<input type="button" name="submit" value="Logout">
+</div>
+</div>
+<script>
+    (function() {
+        var select_val;
+        document.getElementById('selectedTeacher').addEventListener('change', function() {
+            select_val = this.value;
+            document.getElementById('myTeacher').innerHTML = select_val;
+            showUser(select_val);
+        }, false);
+
+    })();
+
+    function showUser(str) {
+        if (str == "") {
+            document.getElementById("txtHint").innerHTML = "";
+            return;
+        } else {
+            if (window.XMLHttpRequest) {
+                // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("txtHint").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("GET","display.php?q=" +str,true);
+            xmlhttp.send();
+        }
+    }
+</script>
+</body>
+</html>
+
